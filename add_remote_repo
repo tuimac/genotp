@@ -1,0 +1,22 @@
+#!/bin/bash
+
+[[ ! -e .git ]] && git init
+
+git add .
+
+echo -en "Comment below\n> "
+read COMMENT
+echo $COMMENT
+
+git commit -m "${COMMENT}"
+echo -en "Paste remote repository's URL\n> "
+read URL
+
+git remote add origin "${URL}"
+
+echo -en "Type in branch(Empty is master)\n> "
+read BRANCH
+
+[[ -n $BRANCH ]] && $BRANCH="master"
+echo ${BRANCH}
+git push -u origin "${BRANCH}"
