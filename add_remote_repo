@@ -17,6 +17,6 @@ git remote add origin "${URL}"
 echo -en "Type in branch(Empty is master)\n> "
 read BRANCH
 
-[[ -n $BRANCH ]] && BRANCH="master"
+[[ $BRANCH == "" ]] && BRANCH="master"
 echo ${BRANCH}
 git push -u origin "${BRANCH}"
