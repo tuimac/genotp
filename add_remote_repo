@@ -1,22 +1,23 @@
 #!/bin/bash
 
+URL="https://github.com/tuimac/totp_linux.git"
+
+
 [[ ! -e .git ]] && git init
 
-git add .
+[[ $1 == "" ]] && { echo "Select files"; exit 1; }
+
+git add "$1"
 
 echo -en "Comment below\n> "
 read COMMENT
-echo $COMMENT
 
 git commit -m "${COMMENT}"
-echo -en "Paste remote repository's URL\n> "
-read URL
-
 git remote add origin "${URL}"
 
-echo -en "Type in branch(Empty is master)\n> "
-read BRANCH
+#echo -en "Type in branch(Empty is master)\n> "
+#read BRANCH
+#[[ $BRANCH == "" ]] && BRANCH="master"
+#git push -u origin "${BRANCH}"
 
-[[ $BRANCH == "" ]] && BRANCH="master"
-echo ${BRANCH}
-git push -u origin "${BRANCH}"
+git push -u origin master
