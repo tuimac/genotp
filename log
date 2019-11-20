@@ -1,0 +1,3 @@
+spawn git push -u origin master
+Username for 'https://github.com': tuimac
+Password for 'https://tuimac@github.com': 
