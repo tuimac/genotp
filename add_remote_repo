@@ -1,7 +1,8 @@
 #!/bin/bash
 
 URL="https://github.com/tuimac/totp_linux.git"
-
+USERNAME="tuimac"
+PASSWORD="night99)"
 
 [[ ! -e .git ]] && git init
 
@@ -20,4 +21,11 @@ git remote add origin "${URL}"
 #[[ $BRANCH == "" ]] && BRANCH="master"
 #git push -u origin "${BRANCH}"
 
-git push -u origin master
+expect -c "
+set timeout 5
+spawn git push -u origin master
+expect \"Username*\"
+send -- \"${USERNAME}\n\"
+expect \"Password*\"
+send -- \"${PASSWORD}\n\"
+"
