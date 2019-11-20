@@ -1,7 +1,5 @@
 #!/bin/bash
 
-URL="https://tuimac:night99)@github.com/tuimac/totp_linux.git"
-
 [[ ! -e .git ]] && git init
 
 [[ $1 == "" ]] && { echo "Select files"; exit 1; }
@@ -12,7 +10,7 @@ echo -en "Comment below\n> "
 read COMMENT
 
 git commit -m "${COMMENT}"
-git remote add origin "${URL}"
+git remote add origin
 
 #echo -en "Type in branch(Empty is master)\n> "
 #read BRANCH
