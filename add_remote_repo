@@ -2,11 +2,14 @@
 
 [[ ! -e .git ]] && git init
 
-[[ $1 == "" ]] && { echo "Select files\nExit"; exit 1; }
-
-echo "$1"
-
-git add "$1"
+if [ "$1" = "" ]; then
+    echo -en "Add all files to repository.\nIs that OK?[Y/N]> "
+    read ANSWER
+    [[ ! $ANSWER = "Y" ]] && { exit 1; }
+    git add .
+else
+    git add "$1"
+fi
 
 echo -en "Comment below\n> "
 read COMMENT
