@@ -4,9 +4,10 @@ Generate six digits one time password on linux based OS for AWS MFA.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+There are information for this tool below so check it out.
+This tool is on the way so if you find bugs or have opinion to improve, please write up to issue.
 
-### Installing
+## Installing
 
 Download "genotp" binary file in the dist directory on this repository then copy that binary to directory was added in PATH.
 
@@ -18,6 +19,10 @@ Type in help.
 genopt --help
 
 ```
+## Support
+
+Mainly most Linux Distributions.
+Redhat, CentOS, Ubuntu, Debian, Amazon Linux
 
 ## Authors
 
