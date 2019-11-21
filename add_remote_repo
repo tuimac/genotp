@@ -4,6 +4,8 @@
 
 [[ $1 == "" ]] && { echo "Select files\nExit"; exit 1; }
 
+echo "$1"
+
 git add "$1"
 
 echo -en "Comment below\n> "
@@ -11,10 +13,9 @@ read COMMENT
 
 git commit -m "${COMMENT}"
 git remote add origin
+git push -u origin master
 
 #echo -en "Type in branch(Empty is master)\n> "
 #read BRANCH
 #[[ $BRANCH == "" ]] && BRANCH="master"
 #git push -u origin "${BRANCH}"
-
-git push -u origin master
