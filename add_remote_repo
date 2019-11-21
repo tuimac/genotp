@@ -1,21 +1,27 @@
 #!/bin/bash
 
+URL="https://github.com/tuimac/totp_linux.git"
+
 [[ ! -e .git ]] && git init
 
-if [ "$1" = "" ]; then
-    echo -en "Add all files to repository.\nIs that OK?[Y/N]> "
-    read ANSWER
-    [[ ! $ANSWER = "Y" ]] && { exit 1; }
-    git add .
-else
-    git add "$1"
+if [ $1 = "" ]; then
+    echo -e "Select files.\nExit."
+    exit 1
 fi
+#    echo -en "Add all files to repository.\nIs that OK?[Y/N]> "
+#    read ANSWER
+#    [[ ! $ANSWER = "Y" ]] && { exit 1; }
+#    git add .
+#else
+#    git add "$1"
+#fi
 
 echo -en "Comment below\n> "
 read COMMENT
 
+git add .
 git commit -m "${COMMENT}"
-git remote add origin
+git remote add origin 
 git push -u origin master
 
 #echo -en "Type in branch(Empty is master)\n> "
