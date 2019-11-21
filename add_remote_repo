@@ -22,6 +22,7 @@ read COMMENT
 git add .
 git commit -m "${COMMENT}"
 git remote add origin "${URL}"
+git pull origin master
 git push -u origin master
 
 #echo -en "Type in branch(Empty is master)\n> "
