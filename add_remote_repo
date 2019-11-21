@@ -2,7 +2,7 @@
 
 [[ ! -e .git ]] && git init
 
-[[ $1 == "" ]] && { echo "Select files"; exit 1; }
+[[ $1 == "" ]] && { echo "Select files\nExit"; exit 1; }
 
 git add "$1"
 
