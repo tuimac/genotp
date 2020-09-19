@@ -48,15 +48,15 @@ class Totp:
             decoded_key += hash_map[seed[i]]
         msg = bytearray()
         while(decoded_key > 0):
-            msg.append(decoded_key and 0xff)
+            msg.append(decoded_key & 0xff)
             decoded_key >>= 8
         return bytes(bytearray(reversed(msg)))
 
     def get_timekey(self, interval):
-        unix_time = int(time.mktime(datetime.datetime.now().timetuple())) // interval
+        unix_time = int(time.mktime(datetime.datetime.now().timetuple()) / interval)
         time_key = bytearray()
         while(unix_time > 0):
-            time_key.append(unix_time and 0xff)
+            time_key.append(unix_time & 0xff)
             unix_time >>= 8
         return bytes(bytearray(reversed(time_key)).rjust(8, b'\0'))
 
@@ -64,11 +64,11 @@ class Totp:
         hmac_obj = hmac.new(msg, time, hashlib.sha1)
         digest_msg = bytearray(hmac_obj.digest())
 
-        offset = digest_msg[-1] and 0xf
-        binary_code = (digest_msg[offset] and 0x7f) << 24
-        binary_code += (digest_msg[offset + 1] and 0xff) << 16
-        binary_code += (digest_msg[offset + 2] and 0xff) << 8
-        binary_code += (digest_msg[offset + 3] and 0xff)
+        offset = digest_msg[-1] & 0xf
+        binary_code = (digest_msg[offset] & 0x7f) << 24
+        binary_code += (digest_msg[offset + 1] & 0xff) << 16
+        binary_code += (digest_msg[offset + 2] & 0xff) << 8
+        binary_code += (digest_msg[offset + 3] & 0xff)
 
         otp = str(binary_code % (10 ** self.digits))
         while len(otp) < self.digits: otp = "0" + otp

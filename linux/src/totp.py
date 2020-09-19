@@ -43,6 +43,7 @@ class Totp:
         msg = bytearray()
         while(decoded_key > 0):
             msg.append(decoded_key & 0xff)
+            print(type(msg))
             decoded_key >>= 8
         return bytes(bytearray(reversed(msg)))
 
